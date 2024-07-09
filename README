@@ -1,0 +1,45 @@
+# link supabase online
+supabase login 
+npx supabase link --project-ref=cqtqmeauhlenxktawqkg # supabase password: z9OgePuYbKndpIhx
+npx supabase db push
+supabase functions deploy 
+yarn dev
+
+curl -L -X POST 'https://cqtqmeauhlenxktawqkg.supabase.co/functions/v1/chat' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxdHFtZWF1aGxlbnhrdGF3cWtnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk3NDI0OTAsImV4cCI6MjAzNTMxODQ5MH0.b2mYDZEViVUY_YdGWVugLI2GW4xRl4mnhNkHyK0MCRM' --data '{"Rome reached its"}'
+
+npx supabase secrets set OPENAI_API_KEY=ollama
+npx supabase secrets set OPENAI_BASE_URL=http://10.128.138.175:11434/v1/
+npx supabase secrets set OPENAI_BASE_URL=http://10.128.138.175:8000/v1/
+supabase start --network-id 10.128.138.175
+supabase status --network-id 10.128.138.175
+
+
+
+supabase db reset --network-id 10.128.138.175
+npx supabase migration up #--network-id 10.128.138.175
+
+# supabase password: z9OgePuYbKndpIhx
+
+
+
+# serve function
+supabase functions serve --env-file=.env.local --network-id 10.128.138.175
+"dev": "next dev -H 10.128.138.175",
+yarn dev
+
+# docker network create -o 'com.docker.network.bridge.host_binding_ipv4=10.128.138.175' local-network
+# npx supabase@beta start --network-id local-network
+# supabase start --network-id local-network
+
+# docker for server ip address: https://docs.docker.com/config/daemon/remote-access/
+
+
+npm i
+npx supabase init
+npx supabase start
+npx supabase status
+npx supabase migration up
+npx supabase functions serve 
+
+
+

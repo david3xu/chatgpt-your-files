@@ -13,7 +13,7 @@ export default function ChatPage() {
 
   const generateEmbedding = usePipeline(
     'feature-extraction',
-    'Supabase/gte-small'
+    'Supabase/all-MiniLM-L6-v2'
   );
 
   const { messages, input, handleInputChange, handleSubmit, isLoading } =

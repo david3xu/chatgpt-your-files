@@ -10,7 +10,7 @@ import { useChat } from 'ai/react';
 import { pipeline } from '@xenova/transformers';
 
 
-export default function ChatPage() {
+export default async function ChatPage() {
   const supabase = createClientComponentClient<Database>();
 
   // const generateEmbedding = usePipeline(

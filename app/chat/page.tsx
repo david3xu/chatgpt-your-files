@@ -7,13 +7,20 @@ import { cn } from '@/lib/utils';
 import { Database } from '@/supabase/functions/_lib/database';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useChat } from 'ai/react';
+import { pipeline } from '@xenova/transformers';
+
 
 export default function ChatPage() {
   const supabase = createClientComponentClient<Database>();
 
-  const generateEmbedding = usePipeline(
+  // const generateEmbedding = usePipeline(
+  //   'feature-extraction',
+  //   'Supabase/all-MiniLM-L6-v2'
+  // );
+
+  const generateEmbedding = await pipeline(
     'feature-extraction',
-    'Supabase/all-MiniLM-L6-v2'
+    'Xenova/all-MiniLM-L6-v2'
   );
 
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
